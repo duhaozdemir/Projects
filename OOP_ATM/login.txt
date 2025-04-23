@@ -1,0 +1,20 @@
+package com.mycompany.oopatm;
+
+import java.util.Scanner;
+
+public class login {
+    public boolean login(hesap Hesap){
+        Scanner scanner=new Scanner(System.in);
+        System.out.println("Kullanici adi:");
+        String Kullaniciadi=scanner.nextLine();
+        System.out.println("Parola: ");
+        String Parola=scanner.nextLine();
+        
+        if(Hesap.getKullaniciadi().equals(Kullaniciadi)&&Hesap.getParola().equals(Parola)){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+}

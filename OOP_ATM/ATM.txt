@@ -1,0 +1,65 @@
+package com.mycompany.oopatm;
+
+import java.util.Scanner;
+
+public class ATM {
+    public void calis(hesap Hesap){
+        login Login= new login();
+        Scanner scanner=new Scanner(System.in);
+        int girishakki=3;
+        
+        System.out.println("Bankamiza hosgeldiniz...");
+        
+        while(true){
+            if(Login.login(Hesap)){
+                System.out.println("Giris basarili.");
+                break;
+            }
+            else{
+                System.out.println("Giris basarisiz.");
+                girishakki-=1;
+                System.out.println("Kalan giris hakki"+girishakki);
+            }
+            if(girishakki==0){
+                System.out.println("Giris hakkiniz tukendi...");
+                return;
+            }
+        }
+        System.out.println("Islemler: ");
+        String islemler= "1.Bakiye Goruntuleme\n"
+                +"2.Para cekme\n"
+                +"3.Para yatirma\n"
+                +"Cikis icin q ya bas";
+        System.out.println(islemler);
+        
+        while(true){
+            System.out.println("Islemi seciniz: ");
+            String islem=scanner.nextLine();
+            
+            if(islem.equals("q")){
+                break;
+            }
+            else if(islem.equals("1")){
+                System.out.println("Bakiyeniz: "+Hesap.getBakiye());
+                
+            }
+            else if(islem.equals("2")){
+                System.out.println("Cekilecek miktari giriniz: ");
+                int tutar=scanner.nextInt();
+                scanner.nextLine();
+                Hesap.paracekme(tutar);
+                
+            }
+            else if(islem.equals("3")){
+                System.out.println("Yatıracağınız miktari giriniz: ");
+                int tutar=scanner.nextInt();
+                scanner.nextLine();
+                Hesap.parayatirma(tutar);
+                
+            } 
+            else{
+                System.out.println("Gecersiz islem...");
+            }
+        }
+    }
+}

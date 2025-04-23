@@ -1,0 +1,11 @@
+package com.mycompany.oopatm;
+
+public class Oopatm {
+
+    public static void main(String[] args) {
+      ATM atm=new ATM();
+      hesap Hesap=new hesap("Duha Ozdemir","654321",3000);
+      atm.calis(Hesap);
+        System.out.println("Programdan Cikiliyor..");
+    }
+}
